@@ -88,31 +88,31 @@ class BitmapText extends HTMLElement {
         for (const [key, value] of this.#charset.entries()) {
             css +=
                 value
-                    .map((num, row) => {
-                        return this.#getBitIs1(num, w)
+                    .map((num, row) =>
+                        this.#getBitIs1(num)
                             .map(
                                 (index) =>
                                     `.c-${key.charCodeAt(0)} li:nth-child(${
-                                        row * w + index
+                                        row * w + w - index
                                     })`
                             )
-                            .join(',');
-                    })
-                    .filter((x) => x.length) + '{ --bg-none: var(--bg-fill)}';
+                            .join(',')
+                    )
+                    .filter((x) => x.length) + '{--bg-none: var(--bg-fill)}';
         }
         return css;
     }
 
-    #getBitIs1(num, w) {
+    #getBitIs1(num) {
         let input = num;
-        let count = w;
+        let count = 0;
         const output = [];
         while (input !== 0) {
             if (input & 1) {
                 output.push(count);
             }
-            input = input >> 1;
-            count--;
+            input >>= 1;
+            count++;
         }
         return output;
     }

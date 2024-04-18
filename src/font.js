@@ -69,7 +69,7 @@ export const font = {
     ]),
 };
 
-export const test = {
-    size: [7, 1],
-    charset: new Map([['A', [0b1011101]]]),
-};
+// export const test = {
+//     size: [7, 1],
+//     charset: new Map([['A', [0b1011101]]]),
+// };
