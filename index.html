@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>@9am/bitmap-text</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue';
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <button id="update">
+            update
+        </button>
+        <button id="updateAll">
+            updateAll
+        </button>
+
+        <bitmap-text>
+            abcdefghijklmnopqrstuvwxyz
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ
+            12345</br>67890
+        </bitmap-text>
+
+        <bitmap-text>
+            A
+        </bitmap-text>
+    </header>
+
+    <script type="module" src="./src/index.js"></script>
+    <script type="module">
+        import { test } from './src/font.js';
+        import { BitmapText } from './src/index.js';
+
+        const bt = document.querySelector('bitmap-text');
+        document.querySelector('#update').addEventListener('click', () => {
+            bt.textContent = Math.random();
+            // bt.attachFont(font1);
+        });
+        document.querySelector('#updateAll').addEventListener('click', () => {
+            // BitmapText.attachFont(test);
+        });
+    </script>
+</body>
+</html>
